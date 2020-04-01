@@ -19,7 +19,7 @@ mk_add_options "export PATH=$MOZ_FETCHES_DIR/cctools/bin:$MOZ_FETCHES_DIR/binuti
 # dsymutil needs a libstdc++ more recent than what's on the system.
 mk_add_options "export LD_LIBRARY_PATH=$MOZ_FETCHES_DIR/clang-osx/lib"
 
-CROSS_SYSROOT="$HOME/Downloads/MacOSX10.14.sdk"
+CROSS_SYSROOT="$MOZ_FETCHES_DIR/MacOSX10.14.sdk"
 CROSS_PRIVATE_FRAMEWORKS=$CROSS_SYSROOT/System/Library/PrivateFrameworks
 
 export CC="$MOZ_FETCHES_DIR/clang-osx/bin/clang"
