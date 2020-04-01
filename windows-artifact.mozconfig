@@ -1,0 +1,12 @@
+mk_add_options MOZ_OBJDIR=obj-windows-artifact
+
+ac_add_options --target=x86_64-pc-mingw32
+ac_add_options --enable-application=comm/mail
+ac_add_options --enable-artifact-builds
+ac_add_options --disable-mapi
+
+MOZ_REQUIRE_SIGNING=0
+
+MOZ_FETCHES_DIR="$HOME/mozilla/fetches"
+export MAKENSISU="${MOZ_FETCHES_DIR}/nsis-3.01/makensis.exe"
+export WINE=${MOZ_FETCHES_DIR}/wine/bin/wine64

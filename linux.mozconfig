@@ -1,0 +1,10 @@
+ac_add_options --enable-application=comm/mail
+# ac_add_options --enable-logrefcnt
+
+export CCACHE="$HOME/.cargo/bin/sccache"
+mk_add_options 'export CCACHE_CPP2=yes'
+mk_add_options 'export RUSTC_WRAPPER=sccache'
+mk_add_options 'export SCCACHE_CACHE_SIZE=25G'
+ac_add_options --with-ccache
+
+MOZ_REQUIRE_SIGNING=0

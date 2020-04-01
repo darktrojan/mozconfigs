@@ -1,0 +1,42 @@
+mk_add_options MOZ_OBJDIR=obj-mac
+
+ac_add_options --target=x86_64-apple-darwin
+ac_add_options --enable-application=comm/mail
+
+MOZ_REQUIRE_SIGNING=0
+
+export CCACHE="$HOME/.cargo/bin/sccache"
+mk_add_options 'export CCACHE_CPP2=yes'
+mk_add_options 'export RUSTC_WRAPPER=sccache'
+mk_add_options 'export SCCACHE_CACHE_SIZE=25G'
+ac_add_options --with-ccache
+
+MOZ_FETCHES_DIR="$HOME/mozilla/fetches"
+
+# cctools for ld, ar, and other related tools ; dsymutil for rust.
+mk_add_options "export PATH=$MOZ_FETCHES_DIR/cctools/bin:$MOZ_FETCHES_DIR/binutils/bin:$MOZ_FETCHES_DIR/llvm-dsymutil/bin:$PATH"
+
+# dsymutil needs a libstdc++ more recent than what's on the system.
+mk_add_options "export LD_LIBRARY_PATH=$MOZ_FETCHES_DIR/clang-osx/lib"
+
+CROSS_SYSROOT="$HOME/Downloads/MacOSX10.14.sdk"
+CROSS_PRIVATE_FRAMEWORKS=$CROSS_SYSROOT/System/Library/PrivateFrameworks
+
+export CC="$MOZ_FETCHES_DIR/clang-osx/bin/clang"
+export CXX="$MOZ_FETCHES_DIR/clang-osx/bin/clang++"
+export CFLAGS="$CFLAGS -fcrash-diagnostics-dir=${UPLOAD_PATH}"
+export CXXFLAGS="$CXXFLAGS -fcrash-diagnostics-dir=${UPLOAD_PATH}"
+export LLVMCONFIG=$MOZ_FETCHES_DIR/clang-osx/bin/llvm-config
+export BINDGEN_CFLAGS="-isysroot $CROSS_SYSROOT"
+export DSYMUTIL=$topsrcdir/build/macosx/llvm-dsymutil
+mk_add_options "export REAL_DSYMUTIL=$MOZ_FETCHES_DIR/llvm-dsymutil/bin/dsymutil"
+export MKFSHFS=$MOZ_FETCHES_DIR/hfsplus-tools/newfs_hfs
+export DMG_TOOL=$MOZ_FETCHES_DIR/dmg/dmg
+export HFS_TOOL=$MOZ_FETCHES_DIR/dmg/hfsplus
+
+export HOST_CFLAGS="-g"
+export HOST_CXXFLAGS="-g"
+export HOST_LDFLAGS="-g"
+
+export MACOS_SDK_DIR=$CROSS_SYSROOT
+export MACOS_PRIVATE_FRAMEWORKS_DIR=$CROSS_PRIVATE_FRAMEWORKS

@@ -1,0 +1,38 @@
+MOZ_OBJDIR=$(realpath obj-windows)
+mk_add_options MOZ_OBJDIR="${MOZ_OBJDIR}"
+
+ac_add_options --target=x86_64-pc-mingw32
+ac_add_options --enable-application=comm/mail
+
+MOZ_REQUIRE_SIGNING=0
+
+MOZ_FETCHES_DIR="$HOME/mozilla/fetches"
+
+VSPATH="/media/geoff/sdk/vs2017"
+export WINDOWSSDKDIR="${VSPATH}/sdk"
+
+# - location of cl.exe
+# - location of nsis.exe
+# - location of clang-cl.exe at the end
+mk_add_options "export PATH=${VSPATH}/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64:${PATH}:${MOZ_FETCHES_DIR}/clang-cl/bin"
+
+export LLVM_CONFIG="${MOZ_FETCHES_DIR}/clang/bin/llvm-config"
+_clang_bindir="$($LLVM_CONFIG --bindir)"
+export AR="${_clang_bindir}/llvm-lib"
+export LLVM_PROFDATA="${_clang_bindir}/llvm-profdata"
+export CC="${_clang_bindir}/clang-cl"
+export CXX="$CC"
+export OBJCOPY="${_clang_bindir}/llvm-objcopy"
+export STRIP="${_clang_bindir}/llvm-strip"
+export RANLIB="${_clang_bindir}/llvm-ranlib"
+export LINKER=${_clang_bindir}/lld-link
+
+export MAKECAB="${MOZ_FETCHES_DIR}/makecab/makecab.exe"
+export NASM="${MOZ_FETCHES_DIR}/nasm/nasm"
+export MAKENSISU="${MOZ_FETCHES_DIR}/nsis-3.01/makensis.exe"
+export MIDL="midl.exe"
+export RC="rc.exe"
+export INCLUDE="${VSPATH}/mapiheaders"
+
+export WINE="${MOZ_FETCHES_DIR}/wine/bin/wine64"
+mk_add_options "export WINEPREFIX=${MOZ_OBJDIR}/wineprefix"
