@@ -2,6 +2,7 @@ mk_add_options MOZ_OBJDIR=obj-mac-artifact
 
 ac_add_options --target=x86_64-apple-darwin
 ac_add_options --enable-application=comm/mail
+ac_add_options --with-app-basename=Thunderbird
 ac_add_options --enable-artifact-builds
 
 MOZ_REQUIRE_SIGNING=0

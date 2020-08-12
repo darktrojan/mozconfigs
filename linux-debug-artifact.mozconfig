@@ -1,6 +1,7 @@
 mk_add_options MOZ_OBJDIR=obj-debug
 
 ac_add_options --enable-application=comm/mail
+ac_add_options --with-app-basename=Thunderbird
 ac_add_options --enable-artifact-builds
 ac_add_options --enable-debug
 
