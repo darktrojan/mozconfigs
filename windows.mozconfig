@@ -32,7 +32,6 @@ export MAKECAB="${MOZ_FETCHES_DIR}/makecab/makecab.exe"
 export NASM="${MOZ_FETCHES_DIR}/nasm/nasm"
 export MAKENSISU="${MOZ_FETCHES_DIR}/nsis-3.01/makensis.exe"
 export MIDL="midl.exe"
-export RC="rc.exe"
 export INCLUDE="${VSPATH}/mapiheaders"
 
 export WINE="${MOZ_FETCHES_DIR}/wine/bin/wine64"
