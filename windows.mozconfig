@@ -3,7 +3,6 @@ mk_add_options MOZ_OBJDIR="${MOZ_OBJDIR}"
 
 ac_add_options --target=x86_64-pc-mingw32
 ac_add_options --enable-application=comm/mail
-ac_add_options --with-app-basename=Thunderbird
 
 MOZ_REQUIRE_SIGNING=0
 
