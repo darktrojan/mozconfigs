@@ -4,6 +4,12 @@ mk_add_options MOZ_OBJDIR="${MOZ_OBJDIR}"
 ac_add_options --target=x86_64-pc-mingw32
 ac_add_options --enable-application=comm/mail
 
+export CCACHE="$HOME/.mozbuild/sccache/sccache"
+mk_add_options 'export CCACHE_CPP2=yes'
+mk_add_options "export RUSTC_WRAPPER=$CCACHE"
+mk_add_options 'export SCCACHE_CACHE_SIZE=25G'
+ac_add_options --with-ccache
+
 MOZ_REQUIRE_SIGNING=0
 
 MOZ_FETCHES_DIR="$HOME/mozilla/fetches"
