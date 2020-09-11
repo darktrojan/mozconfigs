@@ -50,6 +50,11 @@ def a_hook(ui, repo, **kwargs):
     subprocess.call(arguments)
 
     okay = raw_input('Okay? ')
+    if okay.lower() in ['f', 'fix']:
+        arguments = arguments[0:2] + ['--fix'] + arguments[2:]
+        subprocess.call(arguments)
+        return True
+
     if okay.lower() not in ['y', 'yes']:
         print 'That\'s not okay!'
         return True
