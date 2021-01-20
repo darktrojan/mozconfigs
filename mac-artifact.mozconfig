@@ -6,6 +6,6 @@ ac_add_options --enable-artifact-builds
 
 MOZ_REQUIRE_SIGNING=0
 
-MOZ_FETCHES_DIR="$HOME/mozilla/fetches"
-export DMG_TOOL=$MOZ_FETCHES_DIR/dmg/dmg
-export HFS_TOOL=$MOZ_FETCHES_DIR/dmg/hfsplus
+MY_FETCHES_DIR="$HOME/mozilla/fetches"
+export DMG_TOOL=$MY_FETCHES_DIR/dmg/dmg
+export HFS_TOOL=$MY_FETCHES_DIR/dmg/hfsplus

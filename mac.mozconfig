@@ -11,28 +11,28 @@ mk_add_options "export RUSTC_WRAPPER=$CCACHE"
 mk_add_options 'export SCCACHE_CACHE_SIZE=25G'
 ac_add_options --with-ccache
 
-MOZ_FETCHES_DIR="$HOME/mozilla/fetches"
+MY_FETCHES_DIR="$HOME/mozilla/fetches"
 
 # cctools for ld, ar, and other related tools ; dsymutil for rust.
-mk_add_options "export PATH=$MOZ_FETCHES_DIR/cctools/bin:$MOZ_FETCHES_DIR/binutils/bin:$MOZ_FETCHES_DIR/llvm-dsymutil/bin:$PATH"
+mk_add_options "export PATH=$MY_FETCHES_DIR/cctools/bin:$MY_FETCHES_DIR/binutils/bin:$MY_FETCHES_DIR/llvm-dsymutil/bin:$PATH"
 
 # dsymutil needs a libstdc++ more recent than what's on the system.
-mk_add_options "export LD_LIBRARY_PATH=$MOZ_FETCHES_DIR/clang-osx/lib"
+mk_add_options "export LD_LIBRARY_PATH=$MY_FETCHES_DIR/clang-osx/lib"
 
-CROSS_SYSROOT="$MOZ_FETCHES_DIR/MacOSX10.14.sdk"
+CROSS_SYSROOT="$MY_FETCHES_DIR/MacOSX10.14.sdk"
 CROSS_PRIVATE_FRAMEWORKS=$CROSS_SYSROOT/System/Library/PrivateFrameworks
 
-export CC="$MOZ_FETCHES_DIR/clang-osx/bin/clang"
-export CXX="$MOZ_FETCHES_DIR/clang-osx/bin/clang++"
+export CC="$MY_FETCHES_DIR/clang-osx/bin/clang"
+export CXX="$MY_FETCHES_DIR/clang-osx/bin/clang++"
 export CFLAGS="$CFLAGS -fcrash-diagnostics-dir=${UPLOAD_PATH}"
 export CXXFLAGS="$CXXFLAGS -fcrash-diagnostics-dir=${UPLOAD_PATH}"
-export LLVMCONFIG=$MOZ_FETCHES_DIR/clang-osx/bin/llvm-config
+export LLVMCONFIG=$MY_FETCHES_DIR/clang-osx/bin/llvm-config
 export BINDGEN_CFLAGS="-isysroot $CROSS_SYSROOT"
 export DSYMUTIL=$topsrcdir/build/macosx/llvm-dsymutil
-mk_add_options "export REAL_DSYMUTIL=$MOZ_FETCHES_DIR/llvm-dsymutil/bin/dsymutil"
-export MKFSHFS=$MOZ_FETCHES_DIR/hfsplus-tools/newfs_hfs
-export DMG_TOOL=$MOZ_FETCHES_DIR/dmg/dmg
-export HFS_TOOL=$MOZ_FETCHES_DIR/dmg/hfsplus
+mk_add_options "export REAL_DSYMUTIL=$MY_FETCHES_DIR/llvm-dsymutil/bin/dsymutil"
+export MKFSHFS=$MY_FETCHES_DIR/hfsplus-tools/newfs_hfs
+export DMG_TOOL=$MY_FETCHES_DIR/dmg/dmg
+export HFS_TOOL=$MY_FETCHES_DIR/dmg/hfsplus
 
 export HOST_CFLAGS="-g"
 export HOST_CXXFLAGS="-g"

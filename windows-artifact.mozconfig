@@ -7,6 +7,6 @@ ac_add_options --disable-mapi
 
 MOZ_REQUIRE_SIGNING=0
 
-MOZ_FETCHES_DIR="$HOME/mozilla/fetches"
-export MAKENSISU="${MOZ_FETCHES_DIR}/nsis-3.01/makensis.exe"
-export WINE=${MOZ_FETCHES_DIR}/wine/bin/wine64
+MY_FETCHES_DIR="$HOME/mozilla/fetches"
+export MAKENSISU="${MY_FETCHES_DIR}/nsis-3.01/makensis.exe"
+export WINE=${MY_FETCHES_DIR}/wine/bin/wine64
