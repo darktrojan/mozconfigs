@@ -46,12 +46,12 @@ def a_hook(ui, repo, **kwargs):
     # return True
     changes = repo.status(node1=last_public, node2=revision)
     mach_dir = os.path.dirname(repo.root) if repo.root.endswith('comm') else repo.root
-    arguments = [os.path.join(mach_dir, 'mach'), 'eslint'] + changes.modified + changes.added
+    arguments = [os.path.join(mach_dir, 'mach'), 'lint', '-l', 'eslint', '-l', 'black'] + changes.modified + changes.added
     subprocess.call(arguments)
 
     okay = raw_input('Okay? ')
     if okay.lower() in ['f', 'fix']:
-        arguments = arguments[0:2] + ['--fix'] + arguments[2:]
+        arguments = arguments[0:6] + ['--fix'] + arguments[6:]
         subprocess.call(arguments)
         return True
 
