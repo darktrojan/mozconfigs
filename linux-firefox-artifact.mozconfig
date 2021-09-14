@@ -2,5 +2,3 @@ mk_add_options MOZ_OBJDIR=obj-firefox
 
 ac_add_options --enable-application=browser
 ac_add_options --enable-artifact-builds
-
-MOZ_REQUIRE_SIGNING=0

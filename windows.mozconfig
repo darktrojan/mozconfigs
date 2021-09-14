@@ -10,7 +10,7 @@ mk_add_options "export RUSTC_WRAPPER=$CCACHE"
 mk_add_options 'export SCCACHE_CACHE_SIZE=25G'
 ac_add_options --with-ccache
 
-MOZ_REQUIRE_SIGNING=0
+MOZ_REQUIRE_SIGNING=
 
 MY_FETCHES_DIR="$HOME/mozilla/fetches"
 
