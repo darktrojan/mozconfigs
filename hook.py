@@ -45,6 +45,10 @@ def a_hook(ui, repo, **kwargs):
     #         print(repo[a].description())
     # return True
     changes = repo.status(node1=last_public, node2=revision)
+    for change in changes.modified:
+        print('M ' + change)
+    for change in changes.added:
+        print('A ' + change)
     mach_dir = os.path.dirname(repo.root) if repo.root.endswith('comm') else repo.root
     arguments = [os.path.join(mach_dir, 'mach'), 'lint', '-l', 'eslint', '-l', 'black'] + changes.modified + changes.added
     subprocess.call(arguments)
