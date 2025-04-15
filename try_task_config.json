@@ -3,6 +3,7 @@
   "use-artifact-builds": true,
   "tasks": [
     "test-linux1804-64-qr/debug-gtest-1proc",
+    "test-linux1804-64-qr/debug-marionette",
     "test-linux1804-64-qr/debug-mochitest-thunderbird-1",
     "test-linux1804-64-qr/debug-mochitest-thunderbird-2",
     "test-linux1804-64-qr/debug-mochitest-thunderbird-3",
@@ -17,6 +18,7 @@
     "test-linux1804-64-qr/debug-xpcshell-5",
 
     "test-linux1804-64-qr/opt-gtest-1proc",
+    "test-linux1804-64-qr/opt-marionette",
     "test-linux1804-64-qr/opt-mochitest-thunderbird-1",
     "test-linux1804-64-qr/opt-mochitest-thunderbird-2",
     "test-linux1804-64-qr/opt-mochitest-thunderbird-3",
@@ -30,6 +32,7 @@
     "test-linux1804-64-qr/opt-xpcshell-4",
     "test-linux1804-64-qr/opt-xpcshell-5",
 
+    "test-macosx1015-64-qr/debug-marionette",
     "test-macosx1015-64-qr/debug-mochitest-thunderbird-1",
     "test-macosx1015-64-qr/debug-mochitest-thunderbird-2",
     "test-macosx1015-64-qr/debug-mochitest-thunderbird-3",
@@ -43,6 +46,7 @@
     "test-macosx1015-64-qr/debug-xpcshell-4",
     "test-macosx1015-64-qr/debug-xpcshell-5",
 
+    "test-macosx1015-64-qr/opt-marionette",
     "test-macosx1015-64-qr/opt-mochitest-thunderbird-1",
     "test-macosx1015-64-qr/opt-mochitest-thunderbird-2",
     "test-macosx1015-64-qr/opt-mochitest-thunderbird-3",
@@ -85,6 +89,7 @@
     "test-windows11-32-2009-qr/opt-xpcshell-5",
 
     "test-windows11-64-2009-qr/debug-gtest-1proc",
+    "test-windows11-64-2009-qr/debug-marionette",
     "test-windows11-64-2009-qr/debug-mochitest-thunderbird-1",
     "test-windows11-64-2009-qr/debug-mochitest-thunderbird-2",
     "test-windows11-64-2009-qr/debug-mochitest-thunderbird-3",
@@ -99,6 +104,7 @@
     "test-windows11-64-2009-qr/debug-xpcshell-5",
 
     "test-windows11-64-2009-qr/opt-gtest-1proc",
+    "test-windows11-64-2009-qr/opt-marionette",
     "test-windows11-64-2009-qr/opt-mochitest-thunderbird-1",
     "test-windows11-64-2009-qr/opt-mochitest-thunderbird-2",
     "test-windows11-64-2009-qr/opt-mochitest-thunderbird-3",

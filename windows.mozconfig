@@ -1,43 +1,14 @@
-MOZ_OBJDIR=$(realpath obj-windows)
-mk_add_options MOZ_OBJDIR="${MOZ_OBJDIR}"
+mk_add_options MOZ_OBJDIR=obj-windows
 
-ac_add_options --target=x86_64-pc-mingw32
+ac_add_options --target=i686-pc-windows-msvc
+# ac_add_options --target=x86_64-pc-mingw32
 ac_add_options --enable-application=comm/mail
 
 export CCACHE="$HOME/.mozbuild/sccache/sccache"
 mk_add_options 'export CCACHE_CPP2=yes'
 mk_add_options "export RUSTC_WRAPPER=$CCACHE"
-mk_add_options 'export SCCACHE_CACHE_SIZE=25G'
 ac_add_options --with-ccache
 
 MOZ_REQUIRE_SIGNING=
 
-MY_FETCHES_DIR="$HOME/mozilla/fetches"
-
-VSPATH="/media/geoff/sdk/vs2017"
-export WINDOWSSDKDIR="${VSPATH}/sdk"
-
-# - location of cl.exe
-# - location of nsis.exe
-# - location of clang-cl.exe at the end
-mk_add_options "export PATH=${VSPATH}/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64:${PATH}:${MY_FETCHES_DIR}/clang-cl/bin"
-
-FOO="${MY_FETCHES_DIR}/clang/bin/llvm-config"
-_clang_bindir="$($FOO --bindir)"
-export AR="${_clang_bindir}/llvm-lib"
-export LLVM_PROFDATA="${_clang_bindir}/llvm-profdata"
-export CC="${_clang_bindir}/clang-cl"
-export CXX="$CC"
-export OBJCOPY="${_clang_bindir}/llvm-objcopy"
-export STRIP="${_clang_bindir}/llvm-strip"
-export RANLIB="${_clang_bindir}/llvm-ranlib"
-export LINKER=${_clang_bindir}/lld-link
-
-export MAKECAB="${MY_FETCHES_DIR}/makecab/makecab.exe"
-export NASM="${MY_FETCHES_DIR}/nasm/nasm"
-export MAKENSISU="${MY_FETCHES_DIR}/nsis-3.01/makensis.exe"
-export MIDL="midl.exe"
-export INCLUDE="${VSPATH}/mapiheaders"
-
-export WINE="${MY_FETCHES_DIR}/wine/bin/wine64"
-mk_add_options "export WINEPREFIX=${MOZ_OBJDIR}/wineprefix"
+# Run `apt install msitools` before building for the first time.
