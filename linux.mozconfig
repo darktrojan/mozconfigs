@@ -1,12 +1,13 @@
 ac_add_options --enable-application=comm/mail
 
-export CCACHE="$HOME/.mozbuild/sccache/sccache"
-mk_add_options 'export CCACHE_CPP2=yes'
-mk_add_options "export RUSTC_WRAPPER=$CCACHE"
-ac_add_options --with-ccache
+# export CCACHE="$HOME/.mozbuild/sccache/sccache"
+# mk_add_options 'export CCACHE_CPP2=yes'
+# mk_add_options "export RUSTC_WRAPPER=$CCACHE"
+ac_add_options --with-ccache=sccache
 ac_add_options --enable-clang-plugin
 ac_add_options --enable-debug-symbols
 ac_add_options --enable-warnings-as-errors
 ac_add_options --enable-bootstrap
+# ac_add_options --disable-optimize
 
 MOZ_REQUIRE_SIGNING=

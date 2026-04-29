@@ -1,0 +1,34 @@
+mk_add_options MOZ_OBJDIR=obj-ccov
+
+ac_add_options --enable-application=comm/mail
+
+ac_add_options --with-ccache=sccache
+ac_add_options --enable-clang-plugin
+ac_add_options --enable-debug-symbols
+
+# ac_add_options --disable-jxl
+# ac_add_options --disable-webrtc
+
+MOZ_REQUIRE_SIGNING=
+
+# code coverage
+# export JS_CODE_COVERAGE_OUTPUT_DIR=/tmp/ccov
+# ... run test ...
+# ./mach build-backend -b ChromeMap
+# ./mach python ccov-rewrite.py
+
+ac_add_options --disable-install-strip
+ac_add_options --disable-elf-hack
+ac_add_options --disable-sandbox
+ac_add_options --disable-dmd
+ac_add_options --disable-profiling
+ac_add_options --disable-warnings-as-errors
+ac_add_options --without-wasm-sandboxed-libraries
+ac_add_options --enable-coverage
+
+CLANG_LIB_DIR=/home/geoff/.mozbuild/clang/lib/clang/20/lib/linux
+export LDFLAGS="--coverage -L$CLANG_LIB_DIR"
+export LIBS="-lclang_rt.profile-x86_64"
+# export RUSTFLAGS="-Ccodegen-units=1 -Cpanic=abort -Clink-dead-code -Coverflow-checks=off"
+# export RUSTFLAGS="-Ccodegen-units=1 -Zprofile -Cpanic=abort -Zpanic_abort_tests -Clink-dead-code -Coverflow-checks=off"
+export RUSTDOCFLAGS="-Cpanic=abort"

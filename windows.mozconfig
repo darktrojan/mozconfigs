@@ -1,13 +1,14 @@
-mk_add_options MOZ_OBJDIR=obj-windows
+mk_add_options MOZ_OBJDIR=obj-win64
 
-ac_add_options --target=i686-pc-windows-msvc
-# ac_add_options --target=x86_64-pc-mingw32
+# ac_add_options --target=i686-pc-windows-msvc
+ac_add_options --target=x86_64-pc-windows-msvc
 ac_add_options --enable-application=comm/mail
 
 export CCACHE="$HOME/.mozbuild/sccache/sccache"
 mk_add_options 'export CCACHE_CPP2=yes'
 mk_add_options "export RUSTC_WRAPPER=$CCACHE"
 ac_add_options --with-ccache
+ac_add_options --enable-warnings-as-errors
 
 MOZ_REQUIRE_SIGNING=
 
